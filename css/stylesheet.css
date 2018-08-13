@@ -1,0 +1,94 @@
+
+#input {
+	background-color: white;
+	border-color: navy;
+}
+
+.btn-round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    border-color: silver;
+}
+
+.btn-round.btn-lg {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-round.btn-sm {
+    width: 37px;
+    height: 37px;
+    padding: 3px 5px 5px 5px;
+
+}
+
+.btn-round.btn-xs {
+    width: 24px;
+    height: 24px;
+}
+
+
+#linkedin:hover, #linkedin:focus {
+	background-color: #0077B5;
+	color: white;
+	border-color: #0077B5;
+}
+
+
+#instagram:hover, #instagram:focus {
+	background-color: #D92E7F;
+	color: white;
+	border-color: #D92E7F;
+}
+
+#twitter:hover, #twitter:focus {
+	background-color: #0084b4;
+	color: white;
+	border-color: #0084b4;
+}
+
+#github:hover, #github:focus {
+	background-color: darkgrey;
+	color: white;
+	border-color: darkgrey;
+}
+
+#camp:hover, #camp:focus {
+	background-color: #006400;
+	color: white;
+	border-color: #006400;
+}
+
+/* General */
+
+p > a:hover {
+	color: red !important;
+	/*font-size: 50px;*/
+	/*font-family: Lobster, Monospace;*/
+	text-decoration: none;
+} 
+
+p > a:visited {
+	color: green;
+}
+
+.navbar-default .navbar-nav>.active>a {
+	background-image: linear-gradient(to bottom,#4d7fab 0,#81a4c1 100%);
+	background-repeat: repeat-x;
+	box-shadow: inset 0 3px 9px rgba(0,0,0,.075)
+}
+
+.navbar .row {
+	background-color: #6989a5;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a {
+	color: white;
+}
+
+.navbar {
+	border: none;
+}
