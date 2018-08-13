@@ -1,112 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head class="head">
-	
-	<script
-		src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous">
-	</script>
-	<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
-    <title>Eilen's World | Utopia</title>
+<head class="head">
 
-		<style type="text/css">
-			img:hover {
-				opacity: 0.8;
-			}
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+  <link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
-			img {
-				border-radius: 10% !important;
-			}
+  <title>Eilen's World | Utopia</title>
 
-			#dir > li {
-				display: inline-block;
-				padding: 20px 15px;
-				font-family: Lobster;
-				font-size: 25px;
-			}
+  <style type="text/css">
+    img:hover {
+      opacity: 0.8;
+    }
 
-			body {
-				background-image: url("");
-				background-repeat: no-repeat;
-			}
+    img {
+      border-radius: 10% !important;
+    }
 
-			li > a {
-				color: black;
-			}
+    #dir>li {
+      display: inline-block;
+      padding: 20px 15px;
+      font-family: Lobster;
+      font-size: 25px;
+    }
 
-			li > a:hover {
-				text-decoration: none;
-			}
+    body {
+      background-image: url("");
+      background-repeat: no-repeat;
+    }
 
-		</style>
-  </head>
-  <body>
-  	
-  	<div class="navigation"></div>
+    li>a {
+      color: black;
+    }
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="text-center col-xs-16 col-md-8 col-md-offset-2">
-				<div class="text-center"><a href="/about">
-					<img class="img-fluid img-thumbnail" style="max-width: 100%; height: auto; max-height: 350px;" 
-					src="./images/eilen.jpg" alt="Picture of a feral GOAT caught in its natural habitat." 
-					title="A feral animal that often resides in Berkeley, California"></a>
-				</div>
-				<h1 style="font-size: 45px;">Eilen Shahbaz</h1>
-			</div>
-			<div class="text-center col-xs-16 col-md-6 col-md-offset-3" id="memo">
-				<div class="social" style="margin-top: 5px;">
-					<a href="https://www.linkedin.com/in/eilenshahbaz" target="_blank">
-			        	<button id="linkedin" type="button" class="btn btn-default btn-round btn-sm">
-			        	<i class="fa fa-linkedin" aria-hidden="true"></i>
-			        	</button>
-			        </a>
-					<a href="https://www.instagram.com/feral_eilen/" target="_blank">
-						<button id="instagram" type="button" class="btn btn-default btn-round btn-sm">
-						<i class="fa fa-instagram" aria-hidden="true"></i>
-						</button>
-					</a>
-					<a href="https://twitter.com/eilenshahbaz" target="_blank">
-						<button id="twitter" type="button" class="btn btn-default btn-round btn-sm">
-						<i class="fa fa-twitter" aria-hidden="true"></i>
-						</button>
-					</a>
-					<a href="https://github.com/eilenshahbaz" target="_blank">
-						<button id="github" type="button" class="btn btn-default btn-round btn-sm">
-						<i class="fa fa-github" aria-hidden="true"></i>
-						</button>
-					</a>
-				</div> <!-- /.social -->
-				<ul id="dir">
-					<li><a href="/about">About</a></li>
-					<li><a href="/blog">Blog</a></li>
-					<li><a href="/projects">Projects</a></li>
-					<li><a href="/resources/Eilen_Shahbaz_3.pdf">Resume</a></li>
-				</ul>
-			</div>
-		</div>
-		<footer class="row text-center" style="margin: 30px 0 25px;">
-			<div class="col-xs-16 col-md-8 col-md-offset-2" style="border-top: 1px solid #ededed; padding: 25px;">
-				<p style="padding: 10px;">Eilen Foundation &copy; 2017</p>
-			</div>
-		</footer>
+    li>a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <div class="navigation"></div> -->
 
 
-	</div> <!-- /.container-fluid -->
-	</body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="text-center col-xs-16 col-md-8 offset-md-2">
+        <div class="text-center">
+          <a href="/about">
+            <img class="img-fluid img-thumbnail" style="max-width: 100%; height: auto; max-height: 350px;" src="./images/eilen.jpg" alt="Picture of a feral GOAT caught in its natural habitat."
+              title="A feral animal that often resides in Berkeley, California">
+          </a>
+        </div>
+        <h1 style="font-size: 45px;">Eilen Shahbaz</h1>
+      </div>
+      <div class="text-center col-xs-16 col-md-6 offset-md-3" id="memo">
+        <div class="social" style="margin-top: 5px;">
+          <a href="https://www.linkedin.com/in/eilenshahbaz" target="_blank">
+            <button id="linkedin" type="button" class="btn btn-default btn-round btn-sm">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </button>
+          </a>
+          <a href="https://www.instagram.com/feral_eilen/" target="_blank">
+            <button id="instagram" type="button" class="btn btn-default btn-round btn-sm">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </button>
+          </a>
+          <a href="https://twitter.com/eilenshahbaz" target="_blank">
+            <button id="twitter" type="button" class="btn btn-default btn-round btn-sm">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </button>
+          </a>
+          <a href="https://github.com/eilenshahbaz" target="_blank">
+            <button id="github" type="button" class="btn btn-default btn-round btn-sm">
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </button>
+          </a>
+        </div>
+        <!-- /.social -->
+        <ul id="dir">
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/blog">Blog</a>
+          </li>
+          <li>
+            <a href="/projects">Projects</a>
+          </li>
+          <li>
+            <a href="/resources/Eilen_Shahbaz_3.pdf">Resume</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <footer class="row text-center" style="margin: 30px 0 25px;">
+      <div class="col-xs-16 col-md-8 offset-md-2" style="border-top: 1px solid #ededed; padding: 25px;">
+        <p style="padding: 10px;">Eilen Foundation &copy; 2017</p>
+      </div>
+    </footer>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("li#home").attr('class', 'active');
-			$('.head').load('./head.html');
-			$('.navigation').load('./navigation.html');
-			console.log('loading');
 
-		});
-	</script>
+  </div>
+  <!-- /.container-fluid -->
+</body>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("li#home").attr('class', 'active');
+    // $('.head').load('./head.html');
+    // $('.navigation').load('./navigation.html');
+    console.log('loading');
+
+  });
+</script>
 
 
 </html>
