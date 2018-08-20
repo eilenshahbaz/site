@@ -62,6 +62,10 @@
 	border-color: #006400;
 }
 
+.social > a {
+	text-decoration: none !important;
+}
+
 /* General */
 
 p > a:hover {
@@ -91,4 +95,8 @@ p > a:visited {
 
 .navbar {
 	border: none;
+}
+
+div.navigation {
+	padding-bottom: 20px;
 }

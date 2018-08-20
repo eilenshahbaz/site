@@ -1,0 +1,33 @@
+#box {
+	margin-top: 70px;
+	background-color: white;
+	border-radius: 5px; 
+}
+
+#twitter {
+	margin-left: 25px;
+	font-size: 20px;
+	padding: 2px 10px 2px 10px;
+}
+
+
+#nquote {
+	margin-right: 5px;
+}
+
+.btn.btn-default {
+	margin-top: 25px;
+	margin-bottom: 20px;
+	color: white;
+	background-color: lightgrey;
+}
+
+body {
+	background-color: lightgrey;
+	color: black;
+}
+button.btn.btn-default:focus {
+ 	outline: 0;
+ 	border: 0;
+ }
+

@@ -1,0 +1,82 @@
+<?php 
+	$root = $_SERVER['DOCUMENT_ROOT'];
+?>
+
+<!DOCTYPE html>
+<html>  
+  <head>
+  	<?php include $root."/head.php"; ?>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+    
+    <title>I am Legend | Brady</title>
+  </head>
+
+  <body> 
+  	<?php include $root."/navigation.php"; ?>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("li#blog").attr('class', 'active');
+      });
+    </script>
+
+    <div class="container">
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-xs-16">
+          <h1 class="text-center">Tom Brady</h1>
+          <h3 class="text-center"><i>"You wanna know which ring is my favorite? The next one."</i></h3>
+          <div class="thumbnail col-md-8 col-md-offset-2">
+              <img class="img-responsive" src="/images/tommy.jpg"> 
+              <h5 class="text-center">A fired-up Brady pictured shouting, "We're only up by 40 points!"</h5>
+          </div>
+          <div class="col-xs-16 col-md-8 col-md-offset-2">
+          <h3>Here's a timeline of Brady's life</h3>
+            <ul>
+              <li><b>1977</b> - Born in San Mateo, California.</li>
+              <li><b>1982</b> - At the age of four, witnesses "The Catch" at Candlestick Park, San Francisco, CA.</li>
+              <li><b>1995</b> - Graduates from Junipero Serra High School in San Mateo. Brady considers attending Cal.
+                Ultimately chooses to atttend University of Michigan as the seventh quarteback on the depth chart.</li>
+              <li><b>1998</b> - Earns starting position as quarterback, leads the Wolverines to a Big Ten Conference title
+                and caps the season with a victory in the Citrus Bowl.</li>
+              <li><b>1999</b> - Labeled with the moniker, the "Comeback Kid", Brady leads the Wolverines to a plethora of comebacks, 
+                capping his final college football career with back to back comebacks against Ohio State and Alabama.</li>
+              <li><b>2000</b> - In the 6<sup>th</sup> round of the 2000 NFL Draft, the New England Patriots draft, 
+                at the 199<sup>th</sup> pick, Tom Brady, Michigan.</li>
+              <li><b>2002</b> - Takes over the starting role after an injury to Drew Bledsoe and leads the New England Patriots
+                to a victory over the Saint Louis "The Greatest Show on Turf" Rams in Super Bowl XXVI (2001 postseason).</li>
+              <li><b>2004</b> - Leads the New England Patriots to a Super Bowl victory over the Carolina Panthers (2003 postseason).</li>
+              <li><b>2005</b> - Defends world title with a third Super Bowl victory in four years, this time besting the Philadelpia Eagles (2004 postseason).</li>
+            </ul>
+            <blockquote>
+              <p>"He's a good tough, competitive smart quarterback that is a good value and how he does and what he'll be able to do, we'll just put him out there with everybody else and let him compete and see what happens."</p>
+              <footer>Bill Belichick, April 16, 2000 (Draft Day)</footer>
+            </blockquote>
+            <h3>If you want to learn more about this legend, read more about him on his <a href="https://en.wikipedia.org/wiki/Tom_Brady" target="_blank">Wikipedia entry</a>.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div id="disqus_thread" class="col-xs-16 col-md-8 col-md-offset-2" style="padding-top: 40px;"></div>
+    </div>
+
+      <script>
+        var disqus_config = function () {
+        this.page.url = $_SERVER['REQUEST_URI']; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "tommy"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://eilen-org.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      <?php include $root."/footer.php"; ?>
+
+    </div> <!-- container -->   
+  </body>
+</html>

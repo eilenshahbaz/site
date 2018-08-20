@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<div class="header"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+
+	<title>Fine Weather</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row text-center">
+			<div class="col-md-8 offset-md-2">
+				<h1>World's Finest Weather</h1>
+				<p id="location">Loading...</p>
+				<p id="temp"></p>
+			</div>
+			<div class="col-md-8 offset-md-2">
+				<button id="cels" class="btn btn-primary">
+					Celsius
+				</button>
+				<button id="fahr" class="btn btn-danger">
+					Fahrenheit
+				</button>
+				<!-- <button id="getloc" class="btn btn-success">
+					Weather
+				</button> -->
+			</div>
+			<div id="weather-img" class="col-md-8 offset-md-2">
+
+			</div>
+			<div class="col-md-8 offset-md-2 all">
+
+			</div>
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container-fluid -->
+</body>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.header').load('/head.html');
+  });
+</script>
+
+<script src="weather.js"></script>
+
+</html>

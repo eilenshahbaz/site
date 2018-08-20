@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<div class="header"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous">
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+	<title>Blog | Insights</title>
+
+	<style type="text/css">
+		img:hover {
+			opacity: 0.8;
+		}
+
+		img {
+			border-radius: 10% !important;
+		}
+
+		#dir>li {
+			display: inline-block;
+			padding: 20px 15px;
+			font-family: Lobster;
+			font-size: 25px;
+		}
+
+		body {
+			background-image: url("");
+			background-repeat: no-repeat;
+		}
+
+		li>a {
+			color: black;
+		}
+
+		a:hover {
+			text-decoration: none !important;
+		}
+
+		.article {
+			margin-bottom: 20px;
+			font-size: 25px;
+			font-weight: 500;
+
+		}
+
+		time {
+			font-weight: 300;
+			color: #aaa;
+			font-size: 15px;
+			padding-top: 10px;
+		}
+
+		.article>a {
+			color: #000;
+			font-family: 'Roboto Condensed', sans-serif;
+		}
+
+		a:hover {
+			color: #00000075;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="navigation"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="text-center col-xs-16 col-md-8 offset-md-2">
+				<div class="text-center">
+					<a href="/about">
+						<img class="img-fluid img-thumbnail" style="max-width: 100%; height: auto; max-height: 300px;" src="/images/eilen.jpg" alt="Picture of a feral GOAT caught in its natural habitat."
+						 title="A feral animal that often resides in Berkeley, California">
+					</a>
+				</div>
+				<h1 style="margin-top: 10px;">Eilen Shahbaz</h1>
+				<h2 style="font-size: 20px; color: #aaa; font-weight: 300; margin-top: 10px;">Blogger Extraordinaire</h2>
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<!-- <div class="article col-xs-16 col-md-8 offset-md-2">
+				<a href="#">
+				<article class="col-md-8">
+					Two Factor Authentication: Teach a Man to Phish
+				</article>
+				<time class="text-center col-md-4" datetime="25-11-2017">April 2, 2018</time>
+				</a>
+			</div> -->
+			<div class="article col-xs-16 col-md-8 offset-md-2">
+				<a href="./security.html">
+					<article class="col-md-8">
+						Password Management: A User's Guide to Security
+					</article>
+					<time class="text-center col-md-4" datetime="25-11-2017">March 26, 2018</time>
+				</a>
+			</div>
+
+			<div class="article col-xs-16 col-md-8 offset-md-2">
+				<a href="./tribute.html">
+					<article class="col-md-8">
+						Tom Brady: The Rise of an Empire
+					</article>
+					<time class="text-center col-md-4" datetime="25-11-2017">Aug 3, 2017</time>
+				</a>
+			</div>
+		</div>
+
+		<div class="footer"></div>
+
+	</div>
+	<!-- container fluid -->
+
+</body>
+
+<script>
+		$(document).ready(function () {
+			$('.header').load('/head.html');
+			$('.navigation').load('/navigation.html', function() {
+				$("li#blog").addClass('active');
+			});
+			$('.footer').load('/footer.html');
+		});
+	</script>
+
+</html>

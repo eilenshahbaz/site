@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <div class="header"></div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+
+  <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="/css/security.css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans|Playfair+Display" rel="stylesheet">
+  <!-- math equitions -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+  <title>Security | Password</title>
+</head>
+
+<body>
+  <div class="navigation"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-16 col-md-10 offset-md-1 text-center">
+        <h2>Password Management: A User's Guide to Security</h2>
+        <h3>
+          <i>"HMAC is God" - Nicholas Weaver</i>
+        </h3>
+        <div class="col-md-8 offset-md-2 text-center">
+          <img class="img-thumbnail" src="/images/tswift.jpg">
+          <h6>Taylor Swift captured in her natural habitat, spitting wisdom.</h6>
+        </div>
+      </div>
+
+      <div class="col-xs-16 col-md-8 offset-md-2">
+        <p>&emsp; I've received a multitude of requests to write about internet security: why it matters and what you can do
+          about it. Seeing as it is a pivotal topic that has paramount consequences for every individual in today's society,
+          I've decided to write this blog on the most popular medium available to our generation. In part to spread the word
+          to all four corners of the free world as efficiently as possible, and in part to placate the people most important
+          to me - you guys. I will draw from my indoctrination by Professor Weaver here at Berkeley in CS 161: Computer Security
+          in particular, and my personal ventures in general.
+        </p>
+        <p>&emsp; The one item you'll need is
+          <a href="https://1password.com/" target="_blank">1Password</a>. If you take away anything from this article, it is that
+          <b>
+            <em>a password manager will make your internet presence considerably more secure.</em>
+          </b>
+        </p>
+        <h3>Motivation</h3>
+        <p>&emsp; Why should we care about the security of our internet accounts? There are a plethora of reasons, but let us
+          consider a few. I'm sure most of us have an Amazon, Facebook, and/or Google account. And I contend that most people
+          would not want someone obtaining access to their Amazon account and purchasing items via their credit card linked
+          to that account - or worse, their debit card linked to the account. Furthermore, I would not want someone else
+          "hacking" my Facebook account and sending random messages to my family and friends; and I presume most people would
+          not want that either. And finally, almost everyone has a Google account these days that is linked to their mobile
+          devices, tracking their location, containing personal emails, etc. So there are plenty of reasons to care about
+          securing your online presence. And if you think you're not a target, you're mistaken.
+        </p>
+        <p>&emsp; Let us examine how most people choose and manage their passwords. Most passwords fall into one of three categories:
+          we usually have one or two simple passwords like "password" or "letmein", and we use those on most websites that
+          don't require us to have complicated passwords. And then we have another password with a little more complexity
+          for websites that force us to have numbers and alphabet characters in our password, e.g. "password123." Then we
+          have our much more complicated "Password123!" for the third category that requires special characters and capitalization.
+          Now this does make it convenient enough for us to remember all our passwords because we have 20+ different accounts
+          over numerous websites. Who's gonna remember 20+ different passwords? Much easier to just use 3 or 4 and be done
+          with it.
+        </p>
+        <p>&emsp; Imagine you have a Tumblr account and you used your Gmail to sign up. Now also suppose Tumblr suffers a data
+          breach to a malicious entity, where all the user account information, including email addresses and passwords,
+          is compromised. Why should you care? It was just your Tumblr account after all. But wait! You used that same email
+          address and password to make your Amazon account! You have been pwned...
+        </p>
+        <p>&emsp; You don't have to imagine, because this exact data breach happened in 2013, where 65 million Tumblr accounts
+          were compromised. The data was later put up for sale on a dark market website and included all the email addresses
+          and passwords. Now, Tumblr didn't store these passwords in plain text (i.e. as "password") on their database. They
+          used SHA1, a hash function, to turn the raw passwords deterministically into 128 seemingly random bits. The best
+          way to think about hash functions, like SHA1, is to imagine them as meat grinders. You put some meat or password
+          in, and whatever comes out is indistinguishable from what was put in.
+        </p>
+        <p>&emsp; Here is what the password "welcome" would look like after applying the SHA1 function to it:</p>
+        <pre><code>echo "welcome" | shasum -a 1</code></pre>
+        <pre><samp>85fcd345dd2c8f9e3199adb5459a5e1dc2d4e76c</samp></pre>
+        <p>&emsp; This
+          <samp>85fcd345dd2c8f9e3</samp>
+          <samp>199adb5459a5e1dc2d4e76c</samp> does look like a lot of mumbo-jumbo. How could an attacker ever figure out that
+          my password was "welcome" by just looking at this? These SHA functions are deterministic functions, which means
+          that it will always spit out the same exact thing if you give it the same input. So the attacker looks at this
+          and goes, "oh, let me look up the
+          <a href="https://en.wikipedia.org/wiki/List_of_the_most_common_passwords" target="_blank">
+            list of the most common</a> passwords on Wikipedia and let me apply this function to them." When the attacker
+          applies the SHA1 function to the twelfth most common password, "welcome", they hit the jackpot. "Let me try the
+          username 'eilen50@aol.com' and password 'welcome' on Amazon, Twitter, Facebook, etc." - and if I was like most
+          people, that would have been a nice exploit.
+        </p>
+        <p>&emsp; You may at this point object with, "Well this seems so time-consuming. Why would the attacker bother with
+          my information? Surely computing the SHA1 of each password takes some time." With eight modern NVIDIA graphics
+          cards put together on a computer, the attacker can compute 240 million of these per second! And worse, all this
+          computation has already been done and it is publicly available on Github. They're colloquially known as "rainbow
+          tables." So it is relatively cheap for attackers to try this exploit. The most effective measures to protect ourselves
+          from such attacks are strong, unique passwords and two factor authentication. I will discuss the latter in more
+          depth in the next article.
+        </p>
+      </div>
+
+      <div class="col-md-10 offset-md-1">
+        <div class="col-md-8 offset-md-2">
+          <img class="img-thumbnail" src="/images/recycle.jpg">
+          <h5 class="text-center">Reduce, reuse, recycle does not apply to passwords.</h5>
+        </div>
+      </div>
+
+      <div class="col-md-8 offset-md-2 col-xs-16">
+        <h3>Password Strength</h3>
+        <p>&emsp; Following the motivation from above, we can see that common passwords are easy pickings for attackers with
+          modern computers. Let us examine the complexity of various passwords. Suppose you were using a simple password
+          that only includes alphabet characters and no capitalizations. This configuration gives us 26 unique characters
+          to work with (since the lowercase alphabet is that many characters). Thus, the amount of entropy a 10 character
+          password would contain is \[26 \cdot 26 \cdot\ 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26\]
+          \[= 26^{10} \approx 1.41 \times 10^{14}\] That is to the order of 141 trillion possible unique passwords using
+          only the lowercase alphabet. With the computational capabilities available today, that password can be cracked
+          within 3 days. There are two ways to increase the entropy. One is to lengthen the password. The second is to include
+          more characters in the domain.
+        </p>
+        <p>Suppose now that we also include numbers in our password, which means we retain the 26 lowercase alphabetical characters
+          and add 10 more digits (0 - 9) \(\implies 36\) possible characters. \[36^{10} \approx 3.66 \times 10^{15}\] This
+          configuration gives us 3.66 quadrillion amount of entropy for a 10 character password. As you can notice, just
+          adding 10 more characters in our domain of possible characters increased our entropy by an order of magnitude.
+        </p>
+
+        <p>Now suppose we included special characters as well, which are the following characters:</p>
+        <pre><code> !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~</code></pre>
+        <p>
+          That is 33 special characters (including space). Continuing from our previous domain of lowercase alphabet characters and
+          10 digits, adding the 33 special characters gives us 69 possible characters to choose from for each character in
+          our 10 character password. \[69^{10} \approx 2.44 \times 10^{18}\] This is 2 quintillion possible unique 10 character
+          passwords with the domain of 69 characters. It would take an attacker 160 years to crack a password of this configuration
+          with one computer that attempts 240 million hashes a second. With 20 computers, it'll take around 8 years.
+        </p>
+        <p>There is one more thing we can do to optimize the complexity of this 10 character password, and that is to include
+          the uppercase alphabet. That gives us an additional 26 characters to add to our previous 69. We now have 95 unique
+          characters to choose from in our domain. \[95^{10} \approx 5.99 \times 10^{19}\] We now have 59 quintillion amount
+          of entropy in our passwords with this new domain. It would take an attacker around 3,955 years to break this password.
+          That's pretty good. However, this is what a possible password would look like:
+        </p>
+        <pre><code>Xi-9[qZT$t</code></pre>
+        <p>And for some people, \(5.99 \times 10^{19}\) is not too reassuring. Since we've exhausted our method of adding more
+          characters to our domain to increase the entropy, we must now explore lengthening our password. Suppose that we
+          double our length to 20 characters. \[95^{20} \approx 3.58 \times 10^{39}\] That would take an astounding \(2.36
+          \times 10^{23}\) years to break - to put that in perspective, that is 1.79 times the age of the universe. But as
+          before, we have our passwords looking like this:
+        </p>
+        <pre><code>T!qFoCMq@KcVFn#3KvPV</code></pre>
+      </div>
+
+      <div class="col-md-10 offset-md-1">
+        <div class="col-md-8 offset-md-2">
+          <img class="img-thumbnail" src="/images/luke.jpg">
+          <h5 class="text-center">Inform less tech savvy people about strong passwords.</h5>
+        </div>
+      </div>
+
+      <div class="col-xs-16 col-md-8 offset-md-2">
+        <h3>Managing Passwords</h3>
+        <p>&emsp; As we saw, reusing passwords across multiple websites puts users in a vulnerable position. Once one is compromised,
+          the rest are too. Thus, using unique passwords across different websites is essential to maintaining a secure online
+          presence. And as we just discussed, those passwords need to be strong with a lot of entropy. That brings us to,
+          how in the world are we supposed to maintain 20+ unique passwords that look like
+          <samp>"T!qFoCMq@KcVFn#3KvPV"</samp>? We can barely memorize one of those, let alone 20 or more? As it turns out, using
+          passwords comprised of 5
+          <b>
+            <em>random</em>
+          </b> words from the dictionary, like
+          <pre><code>correct-horse-battery-staple-pilgrim</code></pre>
+        </p>
+        <p>gives us approximately the same amount of entropy as something like
+          <samp>"T!qFoCMq@KcVFn#3KvPV"</samp>. It also turns out that we're pretty good at remembering a few passwords like
+          <samp>"correct-horse-battery-staple-pilgrim"</samp>
+          as opposed to a bunch of random special characters, numbers, capitalizations, and whatnot. But as I mentioned, we're only
+          good at remembering a
+          <b>
+            <em>few</em>
+          </b> of these, not 20 or 30. And that's where password managers come in.
+        </p>
+        <p>&emsp; A
+          <a href="https://en.wikipedia.org/wiki/Password_manager" target="_blank">
+            password manager</a> is a program which runs on your computer and/or phone. To use it, you enter a
+          <b>
+            <em>master</em>
+          </b> password to unlock an encrypted store where all your passwords are stored. It can then enter passwords for you
+          in websites, and also generate strong, unique, random passwords. You then only have to remember your one
+          <b>
+            <em>master</em>
+          </b>
+          password, so you
+          <em>better</em> make sure your master password is good.
+        </p>
+        <p>&emsp; There are a plethora of great password managers out there, with some popular, premium ones being
+          <a href="https://1password.com/" target="_blank">1Password</a>
+          and
+          <a href="https://www.lastpass.com/" target="_blank">LastPass</a>, among others. There is also a great free option available,
+          <a href="https://keepass.info/" target="_blank">KeePass</a>. KeePass is an open-source password manager that's available across all platforms. Since it's free
+          and open-source, it requires a certain amount of effort to set up. Professor Weaver, whom has reasons to be paranoid
+          and extra cautious, uses 1Password and I can attest that the user experience is sublime. However, I'd recommend
+          doing some extra research on the options out there before committing to anything.
+        </p>
+
+        <h3>Actionable Items</h3>
+        <ul>
+          <li>
+            <b>Password Manager</b> - Acquire one and change all your passwords.</li>
+        </ul>
+        <br>
+      </div>
+
+      <div class="col-xs-16 col-md-8 offset-md-2">
+        <blockquote>
+          <p>"Be careful and you will save many men from the sin of robbing you."</p>
+          <footer>Ed Howe, July 7, 1998</footer>
+        </blockquote>
+
+        <h4>&emsp; This is the first in the series of "A User's Guide to Security." Check out the second article to learn about
+          protecting yourself from the single most common attack --
+          <a href="#" target="_blank">Two Factor Authentication: Teach a Man to Phish</a>.
+        </h4>
+      </div>
+    </div>
+    <!-- row -->
+
+    <div class="row">
+      <div id="disqus_thread" class="col-xs-16 col-md-8 offset-md-2" style="padding-top: 40px;"></div>
+    </div>
+
+    <script>
+      var disqus_config = function () {
+        this.page.url = $_SERVER['REQUEST_URI']; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "security"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://eilen-org.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+    <div class="footer"></div>
+
+  </div>
+  <!-- container -->
+</body>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+			$('.header').load('/head.html');
+			$('.navigation').load('/navigation.html', function() {
+				$("li#blog").addClass('active');
+			});
+			$('.footer').load('/footer.html');
+		});
+</script>
+
+</html>
