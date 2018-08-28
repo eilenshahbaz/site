@@ -14,44 +14,16 @@
   <title>Projects | Products</title>
 
   <style type="text/css">
-    img:hover {
-      opacity: 0.8;
-    }
-
-    img {
-      border-radius: 10% !important;
-    }
-
-    #dir>li {
-      display: inline-block;
-      padding: 20px 15px;
-      font-family: Lobster;
-      font-size: 25px;
-    }
-
-    body {
-      background-image: url("");
-      background-repeat: no-repeat;
-    }
-
-    li>a {
-      color: black;
-    }
-
-    li>a:hover {
-      text-decoration: none;
-    }
-
     .article {
       margin-bottom: 20px;
       font-size: 25px;
       font-weight: 500;
-
     }
 
     time {
       font-weight: 300;
       color: #aaa;
+      font-family: 'Roboto Condensed', sans-serif;
       font-size: 15px;
       padding-top: 10px;
     }
@@ -60,8 +32,7 @@
       color: #000;
       font-family: 'Roboto Condensed', sans-serif;
     }
-
-    .article>article>a,
+    
     .article>a {
       color: #000;
     }
@@ -70,10 +41,6 @@
     .article>article>a:hover {
       color: #00000075;
       text-decoration: none;
-    }
-
-    .article>article>.source {
-      color: green;
     }
   </style>
 </head>
@@ -86,8 +53,8 @@
       <div class="text-center col-xs-16 col-md-8 offset-md-2">
         <div class="text-center">
           <a href="/about">
-            <img class="img-fluid img-thumbnail" style="max-width: 100%; height: auto; max-height: 300px;" src="/images/eilen.jpg" alt="Picture of a feral GOAT caught in its natural habitat."
-              title="A feral animal that often resides in Berkeley, California">
+            <img class="img-fluid img-thumbnail" id="eilen-img" style="max-width: 100%; height: auto; max-height: 300px;" src="/images/eilen.jpg"
+              alt="Picture of a feral GOAT caught in its natural habitat." title="A feral animal that often resides in Berkeley, California">
           </a>
         </div>
         <h1 style="margin-top: 10px;">Eilen Shahbaz</h1>
@@ -97,23 +64,28 @@
     </div>
 
     <div class="row">
-      <div class="article col-xs-16 col-md-8 offset-md-2">
-        <a href="#">
-          <article class="col-md-8">
-            BearMaps
-            <i class="far fa-map"></i>
+      <div class="col-md-8 offset-md-2">
+        <div class="row">
+          <article class="article col-md-8">
+            <a href="#"> BearMaps
+              <i class="far fa-map"></i>
+            </a>
           </article>
-          <time class="text-center col-md-4" datetime="25-11-2017">Nov 25, 2017</time>
-        </a>
+          <time class="text-center col-md" datetime="25-11-2017">Nov 25, 2017</time>
+        </div>
       </div>
+    </div>
 
-      <div class="article col-xs-16 col-md-8 offset-md-2">
-        <article class="col-md-8">
-          <a href="/quote/">Quote Machine
-            <i class="fas fa-boxes"></i>
-          </a>
-        </article>
-        <time class="text-center col-md-4" datetime="25-11-2017">Aug 3, 2017</time>
+    <div class="row">
+      <div class=" col-xs-16 col-md-8 offset-md-2">
+        <div class="row">
+          <article class="article col-md-8">
+            <a href="/quote/"> Quote Machine
+              <i class="fas fa-boxes"></i>
+            </a>
+          </article>
+          <time class="text-center col-md-4" datetime="25-11-2017">Aug 3, 2017</time>
+        </div>
       </div>
     </div>
 
@@ -125,7 +97,7 @@
 <script>
   $(document).ready(function () {
     $('.header').load('/head.html');
-    $('.navigation').load('/navigation.html', function() {
+    $('.navigation').load('/navigation.html', function () {
       $("li#projects").addClass('active');
     });
     $('.footer').load('/footer.html');
